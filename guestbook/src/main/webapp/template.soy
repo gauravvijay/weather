@@ -1,0 +1,61 @@
+{namespace com.weather}
+
+/** Landing page template */
+{template .weatherPageTemplate}
+{@param cities: ?} // List of cities as tabs in the UI
+{@param selectedCity: string} // Selected City name
+{@param weatherTitle: string} // Weather report title
+{@param weatherDescription: html} // weather report description
+
+<html lang="en">
+  <head>
+    <title>The best weather report in the world</title>
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+  </head>
+  <body>
+  	<div class="banner">
+        <h1 class="title">Weather Report</h1>
+        <h4 class="subtitle">Weather from the great cities of the world</h4>
+    </div>
+    {call .headerTemplate data="all" /}
+    {call .contentTemplate data="all" /}
+  </body>
+</html>
+{/template}
+
+
+/** Template for the tabs in the page header */
+{template .headerTemplate}
+{@param cities: ?}
+{@param selectedCity: string}
+  <ul class="navbar">
+    {foreach $city in $cities}
+      {call .tabHeaderTemplate}
+        {param city : $city /}
+        {param isSelected: $city == $selectedCity ? true : false /}
+      {/call}
+    {/foreach}
+  </ul>
+{/template}
+
+/** Template for a single tab */
+{template .tabHeaderTemplate}
+{@param city: string}
+{@param isSelected: bool}
+    <li class="{if $isSelected}{sp}{css selected}{/if}">
+      <a href="?city={$city}">
+          {$city}
+      </a>
+    </li>
+{/template}
+
+/** Template for the weather report content */
+{template .contentTemplate}
+{@param weatherTitle: string}
+{@param weatherDescription: html}
+  <div class="description">
+    <h2>{$weatherTitle}</h2>
+    <p>{$weatherDescription}</p>
+  </div>
+{/template}
