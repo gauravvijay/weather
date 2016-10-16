@@ -19,12 +19,12 @@ public class HtmlWeatherPresenter implements WeatherPresenter {
   @Override
   public String getHtml(City city, WeatherInfo weatherInfo) {
     String html = tofu.newRenderer("com.weather.weatherPageTemplate")
-        .setData(ImmutableMap.<String, Object>of("selectedCity", city.toString(), "weatherTitle",
-            weatherInfo.getTitle(), "weatherDescription",
-            UnsafeSanitizedContentOrdainer.ordainAsSafe(weatherInfo.getDescription(), ContentKind.HTML),
-            // TODO: use rate limiting.
-            // parse json correctly on only show the next 3 days of forecast.
-            // send for review
+        .setData(ImmutableMap.<String, Object>of(
+            "selectedCity", city.toString(),
+            "weatherTitle", weatherInfo.getTitle(),
+            "weatherDescription",
+                UnsafeSanitizedContentOrdainer.ordainAsSafe(
+                    weatherInfo.getDescription(), ContentKind.HTML),
             "cities", City.getCities()))
         .render();
     return html;

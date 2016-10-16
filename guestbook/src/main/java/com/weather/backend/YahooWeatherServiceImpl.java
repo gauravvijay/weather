@@ -24,18 +24,25 @@ public class YahooWeatherServiceImpl implements WeatherService {
   @Override
   public WeatherInfo getWeatherInfo(City city) throws BackendException {
     String cityStr = city.toString();
-    // TODO: throw only server exception with a cause.
     try {
       URL weatherUrl = new URL(WEATHER_URL + URLEncoder.encode(String.format(YQL, cityStr), "UTF-8"));
       String weatherResultStr = IOUtils.toString(weatherUrl, Charset.forName("UTF-8"));
-      JSONObject itemJson = new JSONObject(weatherResultStr).getJSONObject("query").getJSONObject("results")
-          .getJSONObject("channel").getJSONObject("item");
-      return new WeatherInfo(itemJson.getString("title"), itemJson.getString("description"));
+      JSONObject itemJson = new JSONObject(weatherResultStr)
+          .getJSONObject("query")
+          .getJSONObject("results")
+          .getJSONObject("channel")
+          .getJSONObject("item");
+      return new WeatherInfo(itemJson.getString("title"), stripCData(itemJson));
     } catch (JSONException e) {
       // TODO: Do some json exception specific tasks.
       throw new BackendException(e);
     } catch (IOException e) {
       throw new BackendException(e);
     }
+  }
+
+  private String stripCData(JSONObject itemJson) {
+    String descriptionStr = itemJson.getString("description");
+    return descriptionStr.substring(9, descriptionStr.indexOf("]]>"));
   }
 }
