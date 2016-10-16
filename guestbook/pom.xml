@@ -7,7 +7,7 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<groupId>com.weather</groupId>
-	<artifactId>guestbook</artifactId>
+	<artifactId>weatherapp</artifactId>
 
 	<properties>
 		<app.id>guestbook</app.id>
@@ -79,6 +79,12 @@
 			<artifactId>guice-servlet</artifactId>
 			<version>4.1.0</version>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/com.google.appengine.orm/datanucleus-appengine -->
+<dependency>
+    <groupId>com.google.appengine.orm</groupId>
+    <artifactId>datanucleus-appengine</artifactId>
+    <version>2.1.2</version>
+</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
