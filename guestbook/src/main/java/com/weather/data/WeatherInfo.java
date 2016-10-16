@@ -7,7 +7,7 @@ package com.weather.data;
 public class WeatherInfo {
   String description;
   String title;
-  
+
   /**
    * @param title
    * @param description
@@ -17,12 +17,14 @@ public class WeatherInfo {
     this.title = title;
     this.description = description;
   }
+
   /**
    * @return the description
    */
   public String getDescription() {
     return description;
   }
+
   /**
    * @return the title
    */

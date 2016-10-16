@@ -6,9 +6,9 @@ package com.weather.backend;
  */
 public class BackendException extends Exception {
 
-	public BackendException(Throwable cause) {
-		super(cause);
-		// TODO Auto-generated constructor stub
-	}
+  public BackendException(Throwable cause) {
+    super(cause);
+    // TODO Auto-generated constructor stub
+  }
 
 }

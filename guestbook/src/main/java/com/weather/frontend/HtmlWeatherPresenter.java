@@ -7,7 +7,6 @@ import com.google.template.soy.data.UnsafeSanitizedContentOrdainer;
 import com.google.template.soy.tofu.SoyTofu;
 import com.weather.data.City;
 import com.weather.data.WeatherInfo;
-import com.weather.data.WeatherView;
 
 /**
  * Soy template based UI presentation layer.
@@ -18,22 +17,15 @@ public class HtmlWeatherPresenter implements WeatherPresenter {
   SoyTofu tofu;
 
   @Override
-  public String getHtml(WeatherView wv) {
-    String city = wv.getSelectedCity().toString();
-    WeatherInfo weatherInfo = wv.getWeatherInfo();
+  public String getHtml(City city, WeatherInfo weatherInfo) {
     String html = tofu.newRenderer("com.weather.weatherPageTemplate")
-        .setData(ImmutableMap.<String,
-            Object>of(
-                "selectedCity", city,
-                "weatherTitle", weatherInfo.getTitle(),
-                "weatherDescription",
-                    UnsafeSanitizedContentOrdainer.ordainAsSafe(
-                        weatherInfo.getDescription(),
-                        ContentKind.HTML),
-                    // TODO: use rate limiting.
-                    // parse json correctly on only show the next 3 days of forecast.
-                    // send for review
-                "cities", City.getCities()))
+        .setData(ImmutableMap.<String, Object>of("selectedCity", city.toString(), "weatherTitle",
+            weatherInfo.getTitle(), "weatherDescription",
+            UnsafeSanitizedContentOrdainer.ordainAsSafe(weatherInfo.getDescription(), ContentKind.HTML),
+            // TODO: use rate limiting.
+            // parse json correctly on only show the next 3 days of forecast.
+            // send for review
+            "cities", City.getCities()))
         .render();
     return html;
   }

@@ -9,12 +9,9 @@ import com.google.template.soy.xliffmsgplugin.XliffMsgPluginModule;
 /**
  * Guice Servlet context listener to install required modules for the app.
  */
-public class FrontendServletContextListener extends GuiceServletContextListener{
+public class FrontendServletContextListener extends GuiceServletContextListener {
   @Override
   protected Injector getInjector() {
-    return Guice.createInjector(
-        new FrontendGuiceModule(),
-        new SoyModule(),
-        new XliffMsgPluginModule());
+    return Guice.createInjector(new FrontendGuiceModule(), new SoyModule(), new XliffMsgPluginModule());
   }
 }

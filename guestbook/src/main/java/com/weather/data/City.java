@@ -8,16 +8,14 @@ import java.util.List;
  *
  */
 public enum City {
-  LONDON ("London"),
-  PARIS ("Paris"),
-  AMSTERDAM ("Amsterdam");
-  
+  LONDON("London"), PARIS("Paris"), AMSTERDAM("Amsterdam");
+
   private final String displayName;
-  
-  private City(String displayName){
+
+  private City(String displayName) {
     this.displayName = displayName;
   }
-  
+
   /**
    * @param displayName
    * @return a City from user provided string.
@@ -30,7 +28,7 @@ public enum City {
     // Return a default city if the request doesn't provide a city.
     return LONDON;
   }
-  
+
   /**
    * @return list of supported cities
    */
@@ -43,7 +41,7 @@ public enum City {
     }
     return names;
   }
-  
+
   @Override
   public String toString() {
     return displayName;
