@@ -9,13 +9,17 @@ import com.weather.data.City;
 import com.weather.data.WeatherInfo;
 import com.weather.data.WeatherView;
 
+/**
+ * Soy template based UI presentation layer.
+ *
+ */
 public class HtmlWeatherPresenter implements WeatherPresenter {
   @Inject
   SoyTofu tofu;
 
   @Override
   public String getHtml(WeatherView wv) {
-    String city = wv.getCity().toString();
+    String city = wv.getSelectedCity().toString();
     WeatherInfo weatherInfo = wv.getWeatherInfo();
     String html = tofu.newRenderer("com.weather.weatherPageTemplate")
         .setData(ImmutableMap.<String,

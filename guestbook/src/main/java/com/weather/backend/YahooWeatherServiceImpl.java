@@ -13,16 +13,16 @@ import com.weather.data.City;
 import com.weather.data.WeatherInfo;
 
 /**
- * WeatherClient implementation using Yahoo weather API
+ * WeatherService implementation using Yahoo weather API
  */
-public class YahooWeatherClientImpl implements WeatherClient {
+public class YahooWeatherServiceImpl implements WeatherService {
 	private static final String YQL = "select * from weather.forecast "
 			+ "where woeid in (select woeid from geo.places(1) where text=\"%s\")";
 	// TODO: Use API key for accounting and productionization.
 	private static final String WEATHER_URL = "http://query.yahooapis.com/v1/public/yql?format=json&q=";
 
 	@Override
-	public WeatherInfo getWeatherInfo(City city) throws IOException {
+	public WeatherInfo getWeatherInfo(City city) throws BackendException {
 		String cityStr = city.toString();
 		// TODO: throw only server exception with a cause.
 		try {
@@ -32,7 +32,10 @@ public class YahooWeatherClientImpl implements WeatherClient {
 					.getJSONObject("channel").getJSONObject("item");
 			return new WeatherInfo(itemJson.getString("title"), itemJson.getString("description"));
 		} catch (JSONException e) {
-			throw new IOException(e);
+			// TODO: Do some json exception specific tasks.
+			throw new BackendException(e);
+		} catch (IOException e) {
+			throw new BackendException(e);
 		}
 	}
 }

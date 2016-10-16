@@ -4,12 +4,15 @@ import com.weather.data.City;
 import com.weather.data.WeatherInfo;
 import java.io.IOException;
 
-// TODO add documentation
-public interface WeatherClient {
+/**
+ * Service interface to get weather info.
+ *
+ */
+public interface WeatherService {
   /**
    * @param city
    * @return
    * @throws IOException
    */
-  WeatherInfo getWeatherInfo(City city) throws IOException;
+  WeatherInfo getWeatherInfo(City city) throws BackendException;
 }

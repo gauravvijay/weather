@@ -1,5 +1,9 @@
 package com.weather.data;
 
+/**
+ * Weather related container information.
+ *
+ */
 public class WeatherInfo {
   String description;
   String title;

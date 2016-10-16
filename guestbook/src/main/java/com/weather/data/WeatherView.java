@@ -1,7 +1,11 @@
 package com.weather.data;
 
+/**
+ * UI model information.
+ *
+ */
 public class WeatherView {
-  City city;
+  City selectedCity;
   WeatherInfo weatherInfo;
   /**
    * @param city
@@ -9,14 +13,14 @@ public class WeatherView {
    */
   public WeatherView(City city, WeatherInfo weatherInfo) {
     super();
-    this.city = city;
+    this.selectedCity = city;
     this.weatherInfo = weatherInfo;
   }
   /**
    * @return the city
    */
-  public City getCity() {
-    return city;
+  public City getSelectedCity() {
+    return selectedCity;
   }
   /**
    * @return the weatherInfo
