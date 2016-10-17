@@ -3,6 +3,7 @@ package com.weather;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +35,7 @@ public class WeatherServlet extends HttpServlet {
       resp.setContentType("text/html");
       City city = City.getSanitized(req.getParameter("city"));
       writer.println(weatherPresenter.getHtml(city, weatherService.getWeatherInfo(city)));
-    } catch (BackendException e) {
+    } catch (ServletException e) {
       resp.setContentType("text/plain");
       // TODO: implement a proper exception handling servlet.
       writer.println("Sorry, you have reached an error page.. Try something else");

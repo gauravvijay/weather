@@ -5,6 +5,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
+import javax.servlet.ServletException;
+
 import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +24,7 @@ public class YahooWeatherServiceImpl implements WeatherService {
   private static final String WEATHER_URL = "http://query.yahooapis.com/v1/public/yql?format=json&q=";
 
   @Override
-  public WeatherInfo getWeatherInfo(City city) throws BackendException {
+  public WeatherInfo getWeatherInfo(City city) throws ServletException {
     String cityStr = city.toString();
     try {
       URL weatherUrl = new URL(WEATHER_URL + URLEncoder.encode(String.format(YQL, cityStr), "UTF-8"));
@@ -37,9 +39,9 @@ public class YahooWeatherServiceImpl implements WeatherService {
       return new WeatherInfo(itemJson.getString("title"), stripCData(itemJson));
     } catch (JSONException e) {
       // TODO: Do some json exception specific tasks.
-      throw new BackendException(e);
+      throw new ServletException(e);
     } catch (IOException e) {
-      throw new BackendException(e);
+      throw new ServletException(e);
     }
   }
 
