@@ -1,4 +1,4 @@
-package com.weather.backend;
+package com.weather;
 
 /**
  * Exception wrapper for backend related exceptions

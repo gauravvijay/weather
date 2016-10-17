@@ -1,4 +1,4 @@
-package com.weather.frontend;
+package com.weather;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Inject;

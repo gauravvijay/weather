@@ -1,4 +1,4 @@
-package com.weather.frontend;
+package com.weather;
 
 import com.weather.data.City;
 import com.weather.data.WeatherInfo;

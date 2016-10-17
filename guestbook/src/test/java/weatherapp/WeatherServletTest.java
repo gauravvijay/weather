@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 
-import com.weather.backend.BackendException;
-import com.weather.backend.WeatherService;
+import com.weather.BackendException;
+import com.weather.WeatherPresenter;
+import com.weather.WeatherService;
+import com.weather.WeatherServlet;
 import com.weather.data.City;
 import com.weather.data.WeatherInfo;
-import com.weather.frontend.WeatherPresenter;
-import com.weather.frontend.WeatherServlet;
 
 public class WeatherServletTest {
   private WeatherServlet servlet;

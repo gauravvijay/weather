@@ -5,11 +5,11 @@ import java.io.File;
 import com.google.inject.servlet.ServletModule;
 import com.google.template.soy.SoyFileSet;
 import com.google.template.soy.tofu.SoyTofu;
-import com.weather.backend.WeatherService;
-import com.weather.backend.YahooWeatherServiceImpl;
-import com.weather.frontend.HtmlWeatherPresenter;
-import com.weather.frontend.WeatherPresenter;
-import com.weather.frontend.WeatherServlet;
+import com.weather.HtmlWeatherPresenter;
+import com.weather.WeatherPresenter;
+import com.weather.WeatherService;
+import com.weather.WeatherServlet;
+import com.weather.YahooWeatherServiceImpl;
 
 /**
  * Module to provide bindings for the servlets

@@ -1,4 +1,4 @@
-package com.weather.backend;
+package com.weather;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,6 +32,8 @@ public class YahooWeatherServiceImpl implements WeatherService {
           .getJSONObject("results")
           .getJSONObject("channel")
           .getJSONObject("item");
+      // TODO: Parse information for 3 day forecast, instead of using the description
+      // from Yahoo API directly.
       return new WeatherInfo(itemJson.getString("title"), stripCData(itemJson));
     } catch (JSONException e) {
       // TODO: Do some json exception specific tasks.

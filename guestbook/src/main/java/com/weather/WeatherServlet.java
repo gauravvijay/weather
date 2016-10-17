@@ -1,4 +1,4 @@
-package com.weather.frontend;
+package com.weather;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.weather.backend.BackendException;
-import com.weather.backend.WeatherService;
 import com.weather.data.City;
 
 /**
